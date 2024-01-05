@@ -1,9 +1,10 @@
 # Landing Page Project
 
-## Instructions
+## Overview
+The goal of this project is turn this static website into a dynamic site that is able to respond to changes in its content on the fly and interactively bring into focus the content a user is currently viewing.
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Methodology
+Identfying the classes used for the content sections inside of `index.html`, I created a loop that runs on page load to go through all the sections defined, capture the ID and create a unique navigation button on the navbar for each element. This allows the webpage to respond to any amount of sections being added to its content. Additionally we wanted to control the behaivior of the website when a user clicks a section button on the navbar or scrolls to content on the page. First, inside of our for loop that creates our unique section buttons, we also add a `click` event listener that stifles the default behaivior of that element and instead implements a smooth scrolling effect to selected section. Secondly, to add to the effect of a user viewing their selected content, a `scroll` event listener was added to document that would call the `makeActive()` function. This function would then determine the currently viewed section using the built in `getBoundingClientRect()` and would apply a class to that element, causing special CSS to take effect on that element giving it the effect of being selected or brought into focus from the rest of the page.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Performance
+In terms of performance, since its such a light weight webpage the impact the `makeActive()` function has fairly minimal. This being said, the way it is currently implemented has the function running on every scroll even which could get vary resource intensive on a more complex site. To fix this, I tried utilizing `seTimeout()` so that the function would only be called once a user had stopped scrolling. My inital try at this didn't quite work, but did lead me to a solution that might work called `debouncing` that would take my `makeActive` function and essentially schedule everytime its called. It was a bit over my head at the time, so couldn't quite get a working implementation to include with the final code.
