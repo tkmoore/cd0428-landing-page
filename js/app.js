@@ -59,6 +59,18 @@ function makeActive() {
             section.classList.remove("active");
         }
         activeSection.classList.add("active");
+
+        // Adds the 'active' class to 'li' that has the text content of the corrosponding section. 
+        // Example: If section 1 is the current viewed section, apply the active class. 
+        // Then check the data-nav of that section and apply the active class to the 'li' with that 
+        // info in the text content.
+        const navItems = document.querySelectorAll('#navbar__list li');
+        for (const item of navItems) {
+            item.classList.remove("active");
+            if (item.textContent === activeSection.getAttribute('data-nav')) {
+                item.classList.add("active");
+            }
+        }
     }
 }
 
